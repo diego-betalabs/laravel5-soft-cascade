@@ -19,11 +19,14 @@ class SoftCascade
      *
      * @return void
      */
-    public function cascade($model, $direction)
+    public function cascade($models, $direction)
     {
         $this->direction = $direction;
 
-        $this->run($model);
+        foreach($models as $model) {
+            $this->run($model);
+        }
+
     }
 
     /**

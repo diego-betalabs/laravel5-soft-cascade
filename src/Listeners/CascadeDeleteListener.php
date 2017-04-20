@@ -10,11 +10,11 @@ class CascadeDeleteListener
      * Handel the event for eloquent delete.
      *
      * @param $event
-     * @param  $model
+     * @param  $models
      * @return void
      */
-    public function handle($event, $model)
+    public function handle($event, $models)
     {
-        (new SoftCascade())->cascade($model, 'delete');
+        (new SoftCascade())->cascade($models, 'delete');
     }
 }
