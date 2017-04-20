@@ -1,5 +1,5 @@
 {
-    "name": "askedio/laravel5-soft-cascade",
+    "name": "Betalabs/laravel5-soft-cascade",
     "description": "Soft Delete & Restore Cascader",
     "type": "library",
     "require": {
