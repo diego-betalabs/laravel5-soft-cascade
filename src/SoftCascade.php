@@ -36,7 +36,7 @@ class SoftCascade
      *
      * @return void
      */
-    private function run($model)
+    protected function run($model)
     {
         if (!$this->isCascadable($model)) {
             return;
@@ -53,7 +53,7 @@ class SoftCascade
      *
      * @return mixed
      */
-    private function relations($model, $relations)
+    protected function relations($model, $relations)
     {
         if (empty($relations)) {
             return;
@@ -72,7 +72,7 @@ class SoftCascade
      *
      * @return void
      */
-    private function execute($relation)
+    protected function execute($relation)
     {
         $this->runNestedRelations($relation);
         $relation->{$this->direction}();
@@ -85,7 +85,7 @@ class SoftCascade
      *
      * @return void
      */
-    private function runNestedRelations($relation)
+    protected function runNestedRelations($relation)
     {
         foreach ($this->nestedRelation($relation)->get() as $model) {
             $this->run($model);
@@ -99,7 +99,7 @@ class SoftCascade
      *
      * @return Illuminate\Database\Eloquent\Relations\Relatio
      */
-    private function nestedRelation($relation)
+    protected function nestedRelation($relation)
     {
         if ($this->direction == 'restore') {
             return $relation->withTrashed();
@@ -116,7 +116,7 @@ class SoftCascade
      *
      * @return void
      */
-    private function validateRelation($model, $relation)
+    protected function validateRelation($model, $relation)
     {
         $class = get_class($model);
 
@@ -136,7 +136,7 @@ class SoftCascade
      *
      * @return bool
      */
-    private function isCascadable($model)
+    protected function isCascadable($model)
     {
         return method_exists($model, 'getSoftCascade');
     }
